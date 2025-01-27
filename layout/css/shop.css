@@ -1,0 +1,250 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+#logo{
+    height: 100px;
+    width: 100px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f9f9f9;
+}
+.title-co{
+    color: #84cc16;
+}
+.menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.menu-item {
+    color: #000;
+    text-decoration: none;
+    font-size: large;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #d9f99d;
+    color: rgba(132, 204, 22, 1);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #ecfccb;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero p {
+    color: #64748b;
+    margin: 1rem 0;
+}
+
+/* .btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(132, 204, 22, 1);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #84cc16;
+} */
+
+/* Features Section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.feature-card {
+    background-color: #f5d3a5;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    color: #000;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    color: rgba(132, 204, 22, 1);
+    margin-bottom: 1rem;
+}
+.btn {
+    background-color: #a5ee1c;
+    color: #000;
+    text-decoration: none;
+    font-size: large;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+.banner2-pic{
+    /* border: #ddd solid; */
+    border-radius: 20px;
+    /* border-bottom: #000 solid; */
+}
+.btn:hover {
+    background-color: #d9f99d;
+    color: rgb(44, 46, 42);
+}
+
+/* About Section */
+.about {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+}
+
+.about-text h3 {
+    font-weight: bold;
+    color: rgba(132, 204, 22, 1);
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Call to Action */
+.cta {
+    position: relative;
+    background-image: url('./images/call.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 2rem;
+    color: #fff;
+}
+
+.cta-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    text-align: center;
+}
+
+.cta-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+
+/* Products Section */
+.products {
+    padding: 2rem;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+
+
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    margin: 15px 0 10px;
+}
+
+.product-card .price {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.product-card .buy-now {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card .buy-now:hover {
+    background-color: #218838;
+}
+.p-img{
+    width: 250px; /* Fixed width */
+    height: 230px; /* Fixed height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    display: block; /* Ensures the image behaves as a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #1f2937;
+    color: #fff;
+}
