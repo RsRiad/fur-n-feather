@@ -28,7 +28,7 @@
                 <li ><a class="dark-2" href="">About</a></li>
                 <li ><a class="dark-2" href="">Our Pets</a></li>
                 <li ><a class="dark-2" href="">Contact</a></li>
-                <li><a href=""><button class="btn-shop">Shop</button></a></li>
+                <li><a href="../layout/shop.php"><button class="btn-shop">Shop</button></a></li>
             </ul>
         </nav>
         <div class="banner-description">
