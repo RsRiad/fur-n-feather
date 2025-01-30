@@ -31,7 +31,7 @@
                 </div>
                 <div class="navbar-center">
                     <ul class="menu">
-                        <li><a href="#" class="menu-item">Home</a></li>
+                        <li><a href="../layout/home.php" class="menu-item">Home</a></li>
                         <li><a href="#" class="menu-item">Pets</a></li>
                         <li><a href="#" class="menu-item">Accessories</a></li>
                         <li><a href="#" class="menu-item">About</a></li>
@@ -95,10 +95,8 @@
             <div class="about-text">
                 <h3>About Us</h3>
                 <h2>Tell Website Visitors Who You Are</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod consequatur soluta at reprehenderit
-                    sunt animi natus quibusdam voluptatum, consectetur exercitationem nobis ab in esse nisi mollitia
-                    ipsa fuga odio autem.</p>
-                <button class="btn">Find Out More</button>
+                <p>At Fur-N-Feather, we believe every pet deserves a second chance and a forever family. Our mission is to connect compassionate adopters with furry, feathery, and scaly friends in need of a loving home.</p>
+               
             </div>
             <div class="about-image">
                 <img class="banner2-pic" src="./assets/banner2.jpg" alt="About Us">
@@ -109,8 +107,7 @@
             <div class="cta-overlay">
                 <div class="cta-content">
                     <h1>Insert a Call to Action</h1>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi asperiores soluta autem quia
-                        possimus eos facilis!</p>
+                    <p>For any urgent needs or concerns, our team at Fur-N-Feather is here to help! Whether it’s a wagging tail emergency or a curious whisker question, don’t hesitate to reach out. We’re just a call or paw-print away, ready to assist you and your furry (or feathery) friends!</p>
                     <button class="btn btn-outline">Get Started</button>
                 </div>
             </div>
@@ -120,83 +117,84 @@
             <!-- Product Card 1 -->
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p1.webp" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Rainbow Cat Harness</h3>
+                <p class="price">৳ 250.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 2 -->
             <div class="product-card">
                 <div><img class="p-img" src="./assets/product/p2.png" alt="Assorted Coffee"></div>
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Spring Toy</h3>
+                <p class="price">৳ 180.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 3 -->
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p3.jpg" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Cat Harness butterfly style For Cat Kittens & Puppies Adjustable</h3>
+                <p class="price">৳ 380.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 4 -->
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p4.webp" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Pet Carrier BagPack</h3>
+                <p class="price">৳ 1,350.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p5.jpg" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Portable Pet Carrier Carry Bag
+                </h3>
+                <p class="price">৳ 1,850.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 2 -->
             <div class="product-card">
                 <div><img class="p-img" src="./assets/product/p6.jpg" alt="Assorted Coffee"></div>
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Expandable Cat Carrier Travel Backpack</h3>
+                <p class="price">৳ 2100.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 3 -->
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p7.jpg" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Cat Doll Harness</h3>
+                <p class="price">৳ 500.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 4 -->
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p8.jpg" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Cat Nail Cutter</h3>
+                <p class="price">৳ 150.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p9.jpg" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Toy Fish Teaser</h3>
+                <p class="price">৳ 200.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 6 -->
             <div class="product-card">
                 <div><img class="p-img" src="./assets/product/p10.jpg" alt="Assorted Coffee"></div>
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Feather Teaser</h3>
+                <p class="price">৳ 180.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 7 -->
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p11.jpg" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Mouse Ball Cat Toy</h3>
+                <p class="price">৳ 120.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Product Card 8 -->
             <div class="product-card">
                 <img class="p-img" src="./assets/product/p12.jpg" alt="Assorted Coffee">
-                <h3>Assorted Coffee</h3>
-                <p class="price">$35.00</p>
+                <h3>Pet Nail Cutter</h3>
+                <p class="price">৳ 350.00</p>
                 <button class="buy-now">Buy Now</button>
             </div>
             <!-- Add more product cards as needed -->

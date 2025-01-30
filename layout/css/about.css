@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Chewy', cursive;
+    color: #A87D5D;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #8AA07D;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #F4D35E;
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #A87D5D;
+    color: #fff;
+  }
+  
+  /* Header Section */
+  .header {
+    background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+    
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+  }
+  
+  .header-overlay {
+    background:wheat;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .header h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+  #about{
+    color: rgb(116, 85, 63);
+  }
+  .header p {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .cta-buttons {
+    margin-top: 20px;
+  }
+  
+  .cta-buttons .btn {
+    margin: 0 10px;
+  }
+  
+  /* Mission Section */
+  .mission {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #8AA07D;
+  }
+  #mission{
+    color: wheat;
+  }
+  .mission-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .mission-image img {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+  }
+  
+  .mission-text {
+    max-width: 600px;
+  }
+  
+  /* Story Section */
+  .story {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .story-timeline {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .timeline-item {
+    max-width: 200px;
+    margin: 10px;
+  }
+  
+  .timeline-item img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  /* Team Section */
+  .team {
+    padding: 50px 20px;
+    text-align: center;
+    background-color:rgb(241, 144, 133);
+  }
+  
+  .team-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .team-member {
+    max-width: 200px;
+    margin: 10px;
+  }
+  
+  .team-member img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  /* Testimonials Section */
+  .testimonials {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .testimonial-carousel {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .testimonial-item {
+    max-width: 500px;
+    margin: 10px;
+  }
+  
+  .testimonial-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  /* Call-to-Action Section */
+  .cta {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #A87D5D;
+    color: #fff;
+  }
+  
+  .cta h2 {
+    color: #fff;
+  }
+  
+  /* Footer Section */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .footer-links, .social-media {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links a, .social-media a {
+    color: #fff;
+    margin: 0 10px;
+  }

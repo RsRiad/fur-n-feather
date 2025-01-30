@@ -32,7 +32,7 @@ body{
   }
  
   .banner-description{
-font-family: "Permanent Marker", serif;
+  font-family: "Permanent Marker", serif;
   font-weight: 800;
   font-style: bold;
   font-size: 40px;
@@ -87,6 +87,14 @@ font-family: "Permanent Marker", serif;
       border-radius: 5px;
       border-color: rgb(174, 68, 90);
       border: none;
+  }
+  .btn-about{
+   background-color:rgb(227, 118, 78);
+    color: black;
+    height: 50px;
+    width: 100px;
+    border: 0;
+    font-size: larger;
   }
   .btn-primary1{
     background-color: rgb(174, 68, 90);

@@ -25,9 +25,9 @@
             <ul>
  
                 <li><a class="dark-2" href="">Home</a></li>
-                <li ><a class="dark-2" href="">About</a></li>
-                <li ><a class="dark-2" href="">Our Pets</a></li>
-                <li ><a class="dark-2" href="">Contact</a></li>
+                <li><a class="dark-2" href="../layout/about.php">About</a></li>
+                <li ><a class="dark-2" href="../layout/pet.php">Our Pets</a></li>
+                <li><a class="dark-2" href="../layout/contact.php">Contact</a></li>
                 <li><a href="../layout/shop.php"><button class="btn-shop">Shop</button></a></li>
             </ul>
         </nav>
