@@ -17,6 +17,7 @@ body {
 }
 .title-co{
     color: #84cc16;
+
 }
 .menu {
     display: flex;
@@ -64,21 +65,6 @@ body {
     margin: 1rem 0;
 }
 
-/* .btn {
-    display: inline-flex;
-    align-items: center;
-    background-color: rgba(132, 204, 22, 1);
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #84cc16;
-} */
 
 /* Features Section */
 .features {

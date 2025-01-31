@@ -41,7 +41,8 @@
  
                 <div class="msg"><p class="msg1">Adopt<br><span class="msg2"> Don't Shop</p></div>
                 <button class="btn-primary1">Log In</button>
-                <button class="btn-primary2">Sign Up</button>
+                <!-- <button class=""></button> -->
+                <a href="../vet/view/registration.php"><button class="btn-primary2">Sign Up</button></a>
             </div>
  
         </div>

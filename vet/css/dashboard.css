@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+section {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+/* Improved Chatbox Styling */
+#chat-box {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    max-width: 70%;
+}
+
+.admin-message {
+    background: #ffdd57;
+    align-self: flex-start;
+}
+
+.customer-message {
+    background: #4CAF50;
+    color: white;
+    align-self: flex-start;
+}
+
+.agent-message {
+    background: #2196F3;
+    color: white;
+    align-self: flex-start;
+}
+
+.vet-message {
+    background: #ddd;
+    align-self: flex-end;
+}
+
+#notification-list {
+    list-style: none;
+    padding: 0;
+}
+
+#notification-list li {
+    background: #e7f3ff;
+    margin: 5px 0;
+    padding: 10px;
+    border-left: 5px solid #4CAF50;
+}
+
+/* Treatment History Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #4CAF50;
+    color: white;
+}
+
+.confirm-button {
+    background: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.confirm-button:hover {
+    background: #218838;
+}
