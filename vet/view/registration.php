@@ -40,10 +40,11 @@ include '../control/registration_control.php';
                 <input type="password" class="input" placeholder="Confirm Password" id="signup-confirm-password" name="signup-confirm-password" />
                 <span id="error-confirm-password" class="error-msg"></span>
             </div>
+            <button onclick="validateForm()" type="submit"  class="submit-btn" id="signup-button">Sign up</button>
+
         </form>
 
 <!-- <script src="../js/validation.js"></script> -->
-        <button onclick="validateForm()" type="submit"  class="submit-btn" id="signup-button">Sign up</button>
     </div>
 
     <div class="login slide-up">
