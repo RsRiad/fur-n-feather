@@ -1,67 +1,57 @@
 <?php
-include '../model/db.php'; // Include your database class file
-session_start();
+include '../model/db.php'; 
+// session_start();
+
+$name = "";
+$email = "";
+$phone = "";
+$password = "";
+$errors = []; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["username"];
-    $email = $_POST["signup-email"];
-    $phone = $_POST["signup-phone"];
-    $password = $_POST["signup-password"];
-    // $confirm_password = $_POST["signup-confirm-password"];
-
-    // // Check if passwords match
-    // if ($password !== $confirm_password) {
-    //     echo "Passwords do not match!";
-    //     exit();
-    // }
+    $name = isset($_POST["username"]) ? $_POST["username"] : "";
+    $email = isset($_POST["signup-email"]) ? $_POST["signup-email"] : "";
+    $phone = isset($_POST["signup-phone"]) ? $_POST["signup-phone"] : "";
+    $password = isset($_POST["signup-password"]) ? $_POST["signup-password"] : "";
 
     // Validate Username
-    $cnt = 0;
     if (empty($name)) {
         $errors['username'] = "Username is required.";
-        $cnt++;
     }
 
     // Validate Email
     if (empty($email)) {
         $errors['signup-email'] = "Email is required.";
-        $cnt++;
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['signup-email'] = "Invalid email format.";
-        $cnt++;
     }
 
     // Validate Phone
     if (empty($phone)) {
         $errors['signup-phone'] = "Phone number is required.";
-        $cnt++;
     } elseif (!is_numeric($phone) || strlen($phone) < 11) {
         $errors['signup-phone'] = "Phone number must be at least 11 digits.";
-        $cnt++;
     }
 
     // Validate Password
     if (empty($password)) {
         $errors['signup-password'] = "Password is required.";
-        $cnt++;
     } elseif (strlen($password) < 6) {
         $errors['signup-password'] = "Password must be at least 6 characters.";
-        $cnt++;
     }
-    print_r($errors);
-    // If no errors, insert into database
-    if ($cnt == 0) {
+
+    // insert into database
+    if (empty($errors)) {
         $mydb = new mydb();
         $conobj = $mydb->openCon();
-        // $result = $mydb->addAdmin("admin", );
         $result = $mydb->addAdmin("admin_data", $name, $email, $password, $phone, $conobj);
 
         if ($result === TRUE) {
-            $_SESSION["uname"] = $username;
-            header("Location: ../view/dashboard.php"); // Redirect to profile page
+            header("Location: ../view/dashboard.php"); 
             exit();
         } else {
-            $errors['database'] = "Error: " . $conobj->error;
+            $errors['database'] = "Database error: " . $conobj->error;
         }
     }
 }
+?>
