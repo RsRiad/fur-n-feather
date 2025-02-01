@@ -1,6 +1,6 @@
 <?php
 
-class mydb {
+class mydbb {
 
     function openCon() {
         $dbhost = "localhost";

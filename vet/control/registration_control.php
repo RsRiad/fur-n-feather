@@ -1,42 +1,45 @@
-<!-- <script src="../js/registration.js">  </script> -->
 <?php
 include '../model/db.php';
-
+// include '../view/registration.php';
 
 
     
 
 
 
+    $name = $_REQUEST["signup-name"];
+    $email = $_REQUEST["signup-email"];
+    $phone = $_REQUEST["signup-phone"];
+    $license = $_REQUEST["signup-license"];
+    $special_field = $_REQUEST["signup-special-field"];
+    $password = $_REQUEST["signup-password"];
+    $confirm_password = $_REQUEST["signup-confirm-password"];
 
 
+    echo $name;
+    echo $email;
+    echo $phone;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = [];
     
     
 
-    $name = $_POST["signup-name"];
-    $email = $_POST["signup-email"];
-    $phone = $_POST["signup-phone"];
-    $license = $_POST["signup-license"];
-    $special_field = $_POST["signup-special-field"];
-    $password = $_POST["signup-password"];
-    $confirm_password = $_POST["signup-confirm-password"];
+    
 
-    $mydb = new mydb();
-    $conobj = $mydb->openCon();
+    // $mydb = new mydbb();
+    // $conobj = $mydb->openCon();
 
-    // Add vet to the database
-    $result = $mydb->addVet("vet", $name, $email, $phone, $license, $special_field, "", $password, $conobj);
+    // // Add vet to the database
+    // $result = $mydb->addVet("vet", $name, $email, $phone, $license, $special_field, "", $password, $conobj);
 
-    if ($result == TRUE) {
-        // $_SESSION["email"] = $email;
-        header("Location: ../view/dashboard.php"); 
-        // exit();
-    } else {
-        echo "Error: " . $conobj->error;
-    }
+    // if ($result == TRUE) {
+    //     // $_SESSION["email"] = $email;
+    //     header("Location: ../view/dashboard.php"); 
+    //     // exit();
+    // } else {
+    //     echo "Error: " . $conobj->error;
+    // }
 
 
 

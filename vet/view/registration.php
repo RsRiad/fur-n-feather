@@ -1,6 +1,6 @@
 
 <?php
-require '../control/registration_control.php';
+include '../control/registration_control.php';
 ?>
 
 
