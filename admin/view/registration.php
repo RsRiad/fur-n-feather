@@ -9,7 +9,7 @@ include "../control/login_control.php";
 <html>
 
 <head>
-	<title>Slide Navbar</title>
+	<title>Registration</title>
 	<link rel="stylesheet" type="text/css" href="../css/registration.css">
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>

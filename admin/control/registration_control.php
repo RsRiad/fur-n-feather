@@ -14,33 +14,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = isset($_POST["signup-phone"]) ? $_POST["signup-phone"] : "";
     $password = isset($_POST["signup-password"]) ? $_POST["signup-password"] : "";
 
-    // Validate Username
+    
     if (empty($name)) {
         $errors['username'] = "Username is required.";
     }
 
-    // Validate Email
+   
     if (empty($email)) {
         $errors['signup-email'] = "Email is required.";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['signup-email'] = "Invalid email format.";
     }
 
-    // Validate Phone
+    
     if (empty($phone)) {
         $errors['signup-phone'] = "Phone number is required.";
     } elseif (!is_numeric($phone) || strlen($phone) < 11) {
         $errors['signup-phone'] = "Phone number must be at least 11 digits.";
     }
 
-    // Validate Password
+   
     if (empty($password)) {
         $errors['signup-password'] = "Password is required.";
     } elseif (strlen($password) < 6) {
         $errors['signup-password'] = "Password must be at least 6 characters.";
     }
 
-    // insert into database
     if (empty($errors)) {
         $mydb = new mydb();
         $conobj = $mydb->openCon();

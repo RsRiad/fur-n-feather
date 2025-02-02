@@ -3,59 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/dashboard.js" defer></script>
 </head>
 <body>
-    <div class="container">
+    <div class="dashboard-container">
         <header>
-            <h1>Dashboard</h1>
+            <h2>Admin Dashboard</h2>
+            <div class="admin-info">
+                <span>Admin: John Doe (admin@example.com)</span>
+                <button class="logout">Logout</button>
+            </div>
         </header>
-
-        <nav class="sidebar">
-            <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="manage-pets.html">Manage Pets</a></li>
-                <li><a href="manage-vets.html">Manage Vets</a></li>
-                <li><a href="manage-agents.html">Manage Agents</a></li>
-                <li><a href="notifications.html">Notifications</a></li>
-                <li><a href="inventory.html">Inventory</a></li>
-                <li><a href="transactions.html">Transactions</a></li>
-            </ul>
+        
+        <nav>
+            <button class="tab-button" onclick="showTab('admin')">Admins</button>
+            <button class="tab-button" onclick="showTab('customer')">Customers</button>
         </nav>
-
-        <main>
-            <section id="dashboard">
-                <h2>Dashboard Overview</h2>
-                <div class="dashboard-cards">
-                    <div class="card">
-                        <h3>Total Pets</h3>
-                        <p>120</p>
-                    </div>
-                    <div class="card">
-                        <h3>Total Vets</h3>
-                        <p>15</p>
-                    </div>
-                    <div class="card">
-                        <h3>Total Agents</h3>
-                        <p>8</p>
-                    </div>
-                    <div class="card">
-                        <h3>Monthly Transactions</h3>
-                        <p>$8,560</p>
-                    </div>
-                </div>
-                <div class="notifications">
-                    <h3>Recent Notifications</h3>
-                    <ul>
-                        <li>New pet added: Bella the Golden Retriever</li>
-                        <li>Agent John Doe updated inventory details</li>
-                        <li>Monthly vet report submitted</li>
-                        <li>New transaction: $450 for pet supplies</li>
-                    </ul>
-                </div>
-            </section>
-        </main>
+        
+        <section class="tab-content" id="admin">
+            <h3>Admin Management</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-table"></tbody>
+            </table>
+            <button class="insert" onclick="openForm('admin')">Insert New Admin</button>
+            <input type="text" id="search-admin" placeholder="Search by ID...">
+            <button onclick="searchRecord('admin')">Search</button>
+        </section>
+        
+        <section class="tab-content" id="customer" style="display: none;">
+            <h3>Customer Management</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="customer-table"></tbody>
+            </table>
+            <button class="insert" onclick="openForm('customer')">Insert New Customer</button>
+            <input type="text" id="search-customer" placeholder="Search by ID...">
+            <button onclick="searchRecord('customer')">Search</button>
+        </section>
+    </div>
+    
+    <!-- Modal Form -->
+    <div id="form-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeForm()">&times;</span>
+            <h3 id="form-title">Insert Admin</h3>
+            <input type="hidden" id="record-id">
+            <input type="text" id="name" placeholder="Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="phone" placeholder="Phone">
+            <button onclick="submitForm()">Save</button>
+        </div>
     </div>
 </body>
 </html>

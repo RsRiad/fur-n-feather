@@ -18,19 +18,6 @@ class mydb {
         return $connobject->query($sql);
     }
 
-    // function loginVet($table, $email, $password, $connobject) {
-    //     $sql = "SELECT password FROM $table WHERE email = '$email'";
-    //     $result = $connobject->query($sql);
-
-    //     if ($result->num_rows > 0) {
-    //         $row = $result->fetch_assoc();
-    //         if (password_verify($password, $row['password'])) {
-    //             return true; 
-    //         }
-    //     }
-    //     return false;
-    // }
-
     function loginVet($table, $email, $password, $connobject) {
         $sql = "SELECT * FROM $table WHERE email = '$email' AND password = '$password'";
         $result = $connobject->query($sql);
@@ -38,30 +25,6 @@ class mydb {
         return ($result->num_rows > 0) ? true : false;
     }
 
-
-    // public function loginVet($tableName, $email, $password, $conn) {
-    //     $sql = "SELECT * FROM $tableName WHERE email = '$email' AND password = '$password'";
-    //     $result = mysqli_query($conn, $sql);
-    
-    //     return ($result && mysqli_num_rows($result) == 1) ? mysqli_fetch_assoc($result) : false;
-    // }
-
-
-
-    // public function loginVet($table, $email, $password, $conn) {
-    //     $sql = "SELECT * FROM $table WHERE email = '$email'";
-    //     $result = mysqli_query($conn, $sql);
-    
-    //     if ($result && mysqli_num_rows($result) == 1) {
-    //         $user = mysqli_fetch_assoc($result);
-    //         if (password_verify($password, $user['password'])) {
-    //             return $user;
-    //         }
-    //     }
-    //     return false;
-    // }
-    
-    
     function showAllVets($table, $connobject) {
         $sql = "SELECT * FROM $table";
         return $connobject->query($sql);

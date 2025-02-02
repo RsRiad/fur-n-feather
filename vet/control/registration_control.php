@@ -1,121 +1,85 @@
 <?php
-include '../model/db.php';
-// include '../view/registration.php';
+include '../model/db.php'; // Include database class
 
-
-    
-
-
-
-    $name = $_REQUEST["signup-name"];
-    $email = $_REQUEST["signup-email"];
-    $phone = $_REQUEST["signup-phone"];
-    $license = $_REQUEST["signup-license"];
-    $special_field = $_REQUEST["signup-special-field"];
-    $password = $_REQUEST["signup-password"];
-    $confirm_password = $_REQUEST["signup-confirm-password"];
-
-
-    echo $name;
-    echo $email;
-    echo $phone;
+$errors = []; // Initialize an array for error messages
+$success= ""; 
+    $name            = "";
+    $email           = "";
+    $phone           = 0;
+    $license         = 0;
+    $specialField    = "";
+    $password        = "";
+    $confirmPassword = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $errors = [];
-    
-    
+    // Retrieve input values safely
+    $name = isset($_POST["signup-name"]) ? $_POST["signup-name"] : "";
+    $email = isset($_POST["signup-email"]) ? $_POST["signup-email"] : "";
+    $phone = isset($_POST["signup-phone"]) ? $_POST["signup-phone"] : "";
+    $license = isset($_POST["signup-license"]) ? $_POST["signup-license"] : "";
+    $specialField = isset($_POST["signup-special-field"]) ? $_POST["signup-special-field"] : "";
+    // $availableTime="";
+    $password = isset($_POST["signup-password"]) ? $_POST["signup-password"] : "";
+    $confirmPassword = isset($_POST["signup-confirm-password"]) ? $_POST["signup-confirm-password"] : "";
 
-    
+    // Validate Name
+    if (empty($name)) {
+        $errors['signup-name'] = "Name is required.";
+    }
 
-    // $mydb = new mydbb();
-    // $conobj = $mydb->openCon();
+    // Validate Email
+    if (empty($email)) {
+        $errors['signup-email'] = "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['signup-email'] = "Invalid email format.";
+    }
 
-    // // Add vet to the database
-    // $result = $mydb->addVet("vet", $name, $email, $phone, $license, $special_field, "", $password, $conobj);
+    // Validate Phone
+    if (empty($phone)) {
+        $errors['signup-phone'] = "Phone number is required.";
+    } elseif (!is_numeric($phone) || strlen($phone) < 11) {
+        $errors['signup-phone'] = "Phone number must be at least 11 digits.";
+    }
 
-    // if ($result == TRUE) {
-    //     // $_SESSION["email"] = $email;
-    //     header("Location: ../view/dashboard.php"); 
-    //     // exit();
-    // } else {
-    //     echo "Error: " . $conobj->error;
-    // }
+    // Validate License
+    if (empty($license)) {
+        $errors['signup-license'] = "License is required.";
+    }
 
+    // Validate Special Field
+    if (empty($specialField)) {
+        $errors['signup-special-field'] = "Special field is required.";
+    }
 
+    // Validate Password
+    if (empty($password)) {
+        $errors['signup-password'] = "Password is required.";
+    } elseif (strlen($password) < 6) {
+        $errors['signup-password'] = "Password must be at least 6 characters.";
+    }
 
-    // // Name validation
-    // if (empty($name)) {
-    //     $errors['signup-name'] = "Name is required.";
-    // }
+    // Validate Confirm Password
+    if (empty($confirmPassword)) {
+        $errors['signup-confirm-password'] = "Please confirm your password.";
+    } elseif ($password !== $confirmPassword) {
+        $errors['signup-confirm-password'] = "Passwords do not match.";
+    }
 
-    // // Email validation
-    // if (empty($email)) {
-    //     $errors['signup-email'] = "Email is required.";
-    // } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //     $errors['signup-email'] = "Invalid email format.";
-    // }
+    // If no errors, insert into database
+    if (empty($errors)) {
+        $mydb = new mydb();
+        $conobj = $mydb->openCon();
 
-    // // Phone validation
-    // if (empty($phone)) {
-    //     $errors['signup-phone'] = "Phone number is required.";
-    // } elseif (!preg_match("/^[0-9]{11}$/", $phone)) {
-    //     $errors['signup-phone'] = "Phone number must be 10 digits.";
-    // }
+        // Insert vet details into database
+        $result = $mydb->addVet("vet", $name, $email,$password, $phone, $license, $specialField,  $conobj);
 
-    // // License validation
-    // if (empty($license)) {
-    //     $errors['signup-license'] = "License is required.";
-    // }
-
-    // // Special field validation
-    // if (empty($special_field)) {
-    //     $errors['signup-special-field'] = "Special field is required.";
-    // }
-
-    // // Password validation
-    // if (empty($password)) {
-    //     $errors['signup-password'] = "Password is required.";
-    // } elseif (strlen($password) < 6) {
-    //     $errors['signup-password'] = "Password must be at least 6 characters.";
-    // }
-
-    // // Confirm password validation
-    // if (empty($confirm_password)) {
-    //     $errors['signup-confirm-password'] = "Confirm Password is required.";
-    // } elseif ($password !== $confirm_password) {
-    //     $errors['signup-confirm-password'] = "Passwords do not match.";
-    // }
-
-    // // Check if there are errors
-    // if (!empty($errors)) {
-    //     // session_start();
-    //     // $_SESSION['errors'] = $errors;
-    //     // print_r($errors) ;
-    //     // header("Location: registration_form.php");
-    //     // exit();
-    // } else {
-    //     echo "Form submitted successfully!";
-    //     // Process form (e.g., insert into database)
-
-    // $mydb = new mydb();
-    // $conobj = $mydb->openCon();
-
-    // // Add vet to the database
-    // $result = $mydb->addVet("vet", $name, $email, $phone, $license, $special_field, "", $password, $conobj);
-
-    // if ($result === TRUE) {
-    //     // $_SESSION["email"] = $email;
-    //     header("Location: ../view/dashboard.php"); 
-    //     // exit();
-    // } else {
-    //     echo "Error: " . $conobj->error;
-    // }
-
-
-    // }
-
-    // echo $name;
-
-
+        if ($result === TRUE) {
+            $success = "Registration successful! Redirecting...";
+            header("Location: ../view/dashboard.php"); 
+            exit();
+        } else {
+            $errors['database'] = "Error: " . $conobj->error;
+        }
+    }
 }
 ?>
