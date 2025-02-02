@@ -48,7 +48,9 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Password</th>
                         <th>Phone</th>
+                        <th>Address</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -68,7 +70,9 @@
             <input type="hidden" id="record-id">
             <input type="text" id="name" placeholder="Name">
             <input type="email" id="email" placeholder="Email">
+            <input type="text" id="password" placeholder="Password">
             <input type="text" id="phone" placeholder="Phone">
+            <input type="text" id="address" placeholder="Address">
             <button onclick="submitForm()">Save</button>
         </div>
     </div>

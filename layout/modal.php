@@ -7,11 +7,7 @@
   <link rel="stylesheet" href="./css/modal.css">
 </head>
 <body>
-  <!-- Button to open the modal -->
-  <!-- <button class="btn" onclick="openModal()">Open Modal</button> -->
 
-  <!-- Modal -->
-  <!-- <dialog id="my_modal_1" class="modal"> -->
     <div class="modal-box">
       <h3 class="modal-title">SignUp For</h3>
       <!-- <p class="modal-text">Press ESC key or click the button below to close</p> -->
@@ -25,7 +21,7 @@
         </form>
       </div>
     </div>
-  <!-- </dialog> -->
+
 
   
 </body>

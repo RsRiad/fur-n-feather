@@ -45,6 +45,20 @@
                     <p class="msg1">Adopt<br><span class="msg2"> Don't Shop</p>
                 </div>
                 <button class="btn-primary1">Log In</button>
+                <dialog id="myModal1" class="modal">
+                    <div class="modal-content">
+                        <form method="dialog">
+                            <button id="closeModalBtn1" class="close-btn">✕</button>
+                        </form>
+                        <h3 class="modal-title">As</h3>
+                        <div class="btn3">
+                            <a href="../admin/view/login.php"><button class="btn-shop">Admin</button></a><br>
+                            <a href="../vet/view/login.php"><button class="btn-shop">Veterinarian</button></a><br>
+                            <a href="../layout/login.php"><button class="btn-shop">Customer</button></a>
+                        </div>
+                    </div>
+                    <script src="./js/modal-login.js"></script>
+                </dialog>
                 <!-- <button class=""></button> -->
                 <!-- <a href="./modal.php"><button onclick="openModal()" class="btn-primary2">Sign Up</button></a> -->
 

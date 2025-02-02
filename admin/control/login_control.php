@@ -1,5 +1,5 @@
 <?php
-// include '../model/db.php'; // Include the database class
+include '../model/db.php'; // Include the database class
 // session_start();
 
 $errors = []; 
