@@ -1,11 +1,25 @@
+<?php
+include "../control/msg_control.php";
+//session_start();
+// session_start(); // Start the session
+// if (!isset($_SESSION['name'])) { // Check if the user is logged in
+//     header("Location: ./vet/view/login.php"); // Redirect to login page
+//     exit();
+// }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veterinarian Dashboard</title>
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
+
 <body>
     <div class="dashboard">
         <!-- Profile Section -->
@@ -14,15 +28,13 @@
             <img src="profile-placeholder.png" alt="Vet Profile Picture" class="profile-img">
             <form class="profile-form">
                 <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Enter your name">
-                
+                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($vet['name']); ?>" readonly>
+
                 <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Enter your email">
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($vet['email']); ?>" readonly>
 
                 <label for="phone">Phone:</label>
-                <input type="tel" id="phone" placeholder="Enter phone number">
-                
-                <button type="submit">Update Profile</button>
+                <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($vet['phone']); ?>" readonly>
             </form>
         </section>
 
@@ -51,36 +63,35 @@
         <!-- Chat Section -->
         <section class="chat">
             <h2>Chat</h2>
-            <div class="chat-box">
-                <div class="chat-message">Customer: Hello, my pet is sick.</div>
-                <div class="chat-message vet">Vet: Please provide details.</div>
-            </div>
-            <form >
-            <input id="msg_input" type="text" placeholder="Type a message..." class="chat-input">
-            <button onclick="handelMsg()"class="send-btn" type="submit">Send</button>
-            </form>
+            <div class="chat-box" id="chatBox"></div>
 
+            <form id="chatForm" method="POST" action="../control/msg_control.php">
+                <input id="msg_input" type="text" placeholder="Type a message..." class="chat-input" name="msg_input">
+                <button class="send-btn" type="submit">Send</button>
+            </form>
         </section>
+        <script src="../js/chat.js"></script>
 
         <!-- Notification Section -->
-        <section class="notifications">
-            <h2>Notifications</h2>
-            <ul>
-                <li>New appointment with John Doe at 10:00 AM.</li>
-                <li>Message from pet agent.</li>
-            </ul>
-        </section>
-    </div>
-    <?php
-echo "<script>
-      function handelMsg(e){
-        e.preventDefault();
-        const msg=e.target.msg_input.value;
-        console.log(msg);
-    }
-      
-    </script>";
-?>
-    
+        <form action="../control/logout.php" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+
+        <script>
+            function handelMsg(event) {
+                // event.preventDefault();
+                const msg = event.target.msg_input.value;
+                console.log(msg);
+                const newMsg = document.createElement("p");
+                newMsg.classList.add("chat-message", "vet");
+
+                newMsg.textContent = msg;
+                document.querySelector(".chat-box").appendChild(newMsg);
+            }
+            document.querySelector(".chat form").addEventListener("submit", handelMsg);
+        </script>
+
+
 </body>
+
 </html>

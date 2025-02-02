@@ -54,7 +54,7 @@
                         <div class="btn3">
                             <a href="../admin/view/login.php"><button class="btn-shop">Admin</button></a><br>
                             <a href="../vet/view/login.php"><button class="btn-shop">Veterinarian</button></a><br>
-                            <a href="../layout/login.php"><button class="btn-shop">Customer</button></a>
+                            <a href="../pet_agent/views/index.php"><button class="btn-shop">PetAgent</button></a>
                         </div>
                     </div>
                     <script src="./js/modal-login.js"></script>

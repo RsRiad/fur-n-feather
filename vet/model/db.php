@@ -17,7 +17,21 @@ class mydb {
         
         return $connobject->query($sql);
     }
+    // function addMessage($table, $type, $email, $message, $connobject) {
+    //     $sql = "INSERT INTO $table (type, email, msg) VALUES ('$type', '$email', '$message')";
+    //     return $connobject->query($sql);
+    // }
 
+    function addMessage($table, $type, $email, $message, $connobject) {
+        $sql = "INSERT INTO $table (type, email, msg) VALUES ('$type', '$email', '$message')";
+        
+        if ($connobject->query($sql) === TRUE) {
+            return true;
+        } else {
+            return "Error: " . $connobject->error; // Return SQL error message
+        }
+    }
+    
 
     function loginVet($table, $email, $password, $connobject) {
         $sql = "SELECT * FROM $table WHERE email = '$email' AND password = '$password'";
@@ -48,6 +62,11 @@ class mydb {
         
         return $connobject->query($sql);
     }
+   
+
+
+
+
 }
 
 ?>
