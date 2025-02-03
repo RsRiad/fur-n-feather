@@ -12,7 +12,7 @@ $success= "";
     $confirmPassword = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve input values safely
+    
     $name = isset($_POST["signup-name"]) ? $_POST["signup-name"] : "";
     $email = isset($_POST["signup-email"]) ? $_POST["signup-email"] : "";
     $phone = isset($_POST["signup-phone"]) ? $_POST["signup-phone"] : "";

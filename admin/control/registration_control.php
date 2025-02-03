@@ -48,9 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result === TRUE) {
             header("Location: ../view/dashboard.php"); 
             exit();
-        } else {
-            $errors['database'] = "Database error: " . $conobj->error;
-        }
+        } 
     }
 }
 ?>

@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['login-password'] = "Password is required.";
     }
 
-    // Proceed only if no errors
+   
     if (empty($errors)) {
-        $mydb = new mydb();
+        $mydb = new MyDB();
         $conobj = $mydb->openCon();
 
         $admin = $mydb->loginAdmin("admin_data", $email, $password, $conobj);

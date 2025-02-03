@@ -37,12 +37,12 @@ include "../control/dashboard_control.php";
 
                         <form id="addUserForm" method="POST">
                             <input type="hidden" name="action" value="add"> <!-- Hidden action field -->
-                            <input type="text" name="name" placeholder="Name" required>
-                            <input type="email" name="email" placeholder="Email" required>
-                            <input type="password" name="password" placeholder="Password" required>
-                            <input type="text" name="phone" placeholder="Phone" required>
-                            <input type="text" name="license" placeholder="License" required>
-                            <input type="text" name="s_field" placeholder="Specialization Field" required>
+                            <input type="text" name="name" placeholder="Name">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="password" placeholder="Password">
+                            <input type="text" name="phone" placeholder="Phone">
+                            <input type="text" name="license" placeholder="License">
+                            <input type="text" name="s_field" placeholder="Specialization Field">
                             <button type="submit">Add User</button>
                         </form>
 
@@ -51,7 +51,7 @@ include "../control/dashboard_control.php";
                 <tr>
                     <td colspan="8">
                         <form id="updateUserForm" method="POST">
-                            <input type="hidden" name="action" value="update"> <!-- Hidden action field -->
+                            <input type="hidden" name="action" value="update">
                             <input type="text" name="id" placeholder="User ID" required>
                             <input type="text" name="name" placeholder="New Name">
                             <input type="email" name="email" placeholder="New Email">
@@ -69,7 +69,7 @@ include "../control/dashboard_control.php";
                         <h2>Search Vet</h2>
                         <form method="POST">
                             <input type="hidden" name="action" value="search">
-                            <input type="text" name="keyword" placeholder="Enter name, email, or phone" required>
+                            <input type="text" name="keyword" placeholder="Enter name, email, or phone">
                             <button type="submit">Search</button>
                         </form>
                     </td>
@@ -77,8 +77,8 @@ include "../control/dashboard_control.php";
                 <tr>
                     <td colspan="8">
                         <form id="deleteUserForm" method="POST">
-                            <input type="hidden" name="action" value="delete"> <!-- Hidden action field -->
-                            <input type="text" name="id" placeholder="User ID" required>
+                            <input type="hidden" name="action" value="delete">
+                            <input type="text" name="id" placeholder="User ID">
                             <button type="submit">Delete User</button>
                         </form>
                     </td>
@@ -88,31 +88,31 @@ include "../control/dashboard_control.php";
 
 
         <tbody>
-    <?php if (!empty($vets)) : ?>
-        <?php foreach ($vets as $vet) : ?>
-            <tr>
-                <td><?php echo $vet['id']; ?></td>
-                <td><?php echo $vet['name']; ?></td>
-                <td><?php echo $vet['email']; ?></td>
-                <td><?php echo $vet['password']; ?></td>
-                <td><?php echo $vet['phone']; ?></td>
-                <td><?php echo $vet['license']; ?></td>
-                <td><?php echo $vet['sp_field']; ?></td>
-                <td>
-                    <form method="POST" style="">
-                        <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="id" value="<?php echo $vet['id']; ?>">
-                        <!-- <button type="submit">Delete</button> -->
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    <?php else : ?>
-        <tr>
-            <td colspan="8">No vets found.</td>
-        </tr>
-    <?php endif; ?>
-</tbody>
+            <?php if (!empty($vets)) : ?>
+                <?php foreach ($vets as $vet) : ?>
+                    <tr>
+                        <td><?php echo $vet['id']; ?></td>
+                        <td><?php echo $vet['name']; ?></td>
+                        <td><?php echo $vet['email']; ?></td>
+                        <td><?php echo $vet['password']; ?></td>
+                        <td><?php echo $vet['phone']; ?></td>
+                        <td><?php echo $vet['license']; ?></td>
+                        <td><?php echo $vet['sp_field']; ?></td>
+                        <td>
+                            <form method="POST" style="">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="id" value="<?php echo $vet['id']; ?>">
+                                <!-- <button type="submit">Delete</button> -->
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td colspan="8">No vets found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
 
 
 

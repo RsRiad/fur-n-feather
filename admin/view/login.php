@@ -17,7 +17,7 @@ include("../control/login_control.php");
 
     <body>
         <div class="main">
-            <!-- <input type="checkbox" id="chk" aria-hidden="true"> -->
+            
             <?php if (!empty($errors)): ?>
                 <div class="error-box">
                     <?php foreach ($errors as $error): ?>

@@ -1,6 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 include "../model/db.php";
 
 $db = new MyDB();
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($db->addVet("vet", $name, $email, $password, $phone, $license, $s_field, $conn)) {
             $message = "Vet added successfully!";
         } else {
-            $message = "Failed to add vet: " . $conn->error; // Show DB error
+            $message = "Failed to add vet: " . $conn->error; 
         }
     }
 
@@ -58,20 +57,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Search Vet
     if ($action == 'search') {
-        $keyword = $_POST['keyword']; // Get the search keyword
-        $result = $db->searchVet("vet", $conn, $keyword); // Perform the search
-        $vets = []; // Reset the vets array
+        $keyword = $_POST['keyword']; 
+        $result = $db->searchVet("vet", $conn, $keyword); 
+        $vets = []; 
         if ($result) {
             while ($row = $result->fetch_assoc()) {
-                $vets[] = $row; // Add each row to the vets array
+                $vets[] = $row; 
             }
         } else {
-            $message = "No results found or an error occurred: " . $conn->error; // Handle errors
+            $message = "No results found or an error occurred: " . $conn->error; 
         }
     }
 }
 
-// Fetch all vets ONLY if no search was performed
+
 if (!isset($_POST['action']) || $_POST['action'] != 'search') {
     $result = $db->showAllVets("vet", $conn);
     while ($row = $result->fetch_assoc()) {

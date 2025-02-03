@@ -16,9 +16,9 @@ let agents = [
 
 // Function to populate tables
 function populateTables() {
-    const petTableBody = document.querySelector("#pet-table tbody");
-    const vetTableBody = document.querySelector("#vet-table tbody");
-    const agentTableBody = document.querySelector("#agent-table tbody");
+    var petTableBody = document.querySelector("#pet-table tbody");
+    var vetTableBody = document.querySelector("#vet-table tbody");
+    var agentTableBody = document.querySelector("#agent-table tbody");
 
     // Clear existing rows
     petTableBody.innerHTML = "";
@@ -27,7 +27,7 @@ function populateTables() {
 
     // Populate pets table
     pets.forEach(pet => {
-        const row = document.createElement("tr");
+        var row = document.createElement("tr");
         row.innerHTML = `
             <td>${pet.id}</td>
             <td>${pet.breed}</td>
@@ -63,10 +63,10 @@ function populateTables() {
 // Function to add/update pet
 document.getElementById("pet-form").addEventListener("submit", function (e) {
     e.preventDefault();
-    const petId = document.getElementById("pet-id").value;
-    const breed = document.getElementById("breed").value;
-    const age = document.getElementById("age").value;
-    const category = document.getElementById("category").value;
+    var petId = document.getElementById("pet-id").value;
+    var breed = document.getElementById("breed").value;
+    var age = document.getElementById("age").value;
+    var category = document.getElementById("category").value;
 
     const existingPet = pets.find(pet => pet.id == petId);
     if (existingPet) {
@@ -85,7 +85,7 @@ document.getElementById("pet-form").addEventListener("submit", function (e) {
 
 // Function to delete pet
 function deletePet() {
-    const petId = document.getElementById("pet-id").value;
+    var petId = document.getElementById("pet-id").value;
     pets = pets.filter(pet => pet.id != petId);
     populateTables();
 }

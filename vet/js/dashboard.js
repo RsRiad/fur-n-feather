@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelector("button").addEventListener("click", sendMessage);
 
-    // Treatment history confirmation
+    
     document.querySelectorAll(".confirm-button").forEach(button => {
         button.addEventListener("click", function() {
             this.textContent = "Confirmed";
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Notification system (simulating new notifications)
+    
     function addNotification(message) {
         const notificationList = document.getElementById("notification-list");
         const newNotification = document.createElement("li");
@@ -35,6 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
         notificationList.appendChild(newNotification);
     }
 
-    setTimeout(() => addNotification("New message from a Pet Owner"), 5000);
-    setTimeout(() => addNotification("New appointment scheduled"), 10000);
+    // setTimeout(() => addNotification("New message from a Pet Owner"), 5000);
+    // setTimeout(() => addNotification("New appointment scheduled"), 10000);
 });

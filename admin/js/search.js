@@ -1,10 +1,10 @@
 // Function to load pets from the server
 function loadPets(query = '') {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `../control/search_control.php?query=${query}`, true); // Send the query if any
+    xhr.open('GET', `../control/search_control.php?query=${query}`, true); 
     xhr.onload = function() {
         if (xhr.status === 200) {
-            const pets = JSON.parse(xhr.responseText); // Parse the JSON response
+            const pets = JSON.parse(xhr.responseText); 
             let tableRows = '';
 
             pets.forEach(pet => {
@@ -21,20 +21,20 @@ function loadPets(query = '') {
                 `;
             });
 
-            // Update the table with the new rows
+            
             document.getElementById('pets-tbody').innerHTML = tableRows;
         }
     };
-    xhr.send(); // Send the request to the server
+    xhr.send(); 
 }
 
-// Load all pets initially when the page loads
+
 document.addEventListener('DOMContentLoaded', function() {
-    loadPets(); // Initially load all available pets
+    loadPets(); 
 });
 
-// Add event listener for keyup on the search input
+
 document.getElementById('search-input').addEventListener('keyup', function() {
-    const query = document.getElementById('search-input').value; // Get search input value
-    loadPets(query); // Load pets based on the search query
+    const query = document.getElementById('search-input').value; 
+    loadPets(query); 
 });

@@ -114,5 +114,5 @@ function validateForm() {
         isValid = false;
     }
 
-    return isValid; // If `isValid` is false, form submission is prevented
+    return isValid; 
 }
