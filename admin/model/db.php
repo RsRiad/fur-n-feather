@@ -1,12 +1,11 @@
 <?php
 
-class mydb {
-
+class MyDB {
     function openCon() {
         $dbhost = "localhost";
         $dbusername = "root";
         $dbpassword = "";
-        $dbname = "mydb"; // Your database name
+        $dbname = "mydb";
         $connobject = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
 
         if ($connobject->connect_error) {
@@ -15,84 +14,47 @@ class mydb {
         return $connobject;
     }
 
-    function addAdmin($table, $name, $email,  $password,$phone, $connobject) {
-        $sql = "INSERT INTO $table (name, email, password, phone) 
-                VALUES ('$name', '$email', '$password', '$phone')";
-        
+    function addVet($table, $name, $email, $password, $phone, $license, $sp_field, $connobject) {
+        $sql = "INSERT INTO $table (name, email, password, phone, license, sp_field) 
+                VALUES ('$name', '$email', '$password', '$phone', '$license', '$sp_field')";
         return $connobject->query($sql);
     }
 
-    function loginAdmin($table, $email, $password, $connobject) {
-        $sql = "SELECT * FROM $table WHERE email = '$email' AND password = '$password'";
-        $result = $connobject->query($sql);
-        
-        return ($result->num_rows > 0) ? true : false;
-    }
-
-    function showAllAdmins($table, $connobject) {
+    function showAllVets($table, $connobject) {
         $sql = "SELECT * FROM $table";
         return $connobject->query($sql);
     }
 
-    function searchAdminByID($table, $connobject, $id) {
-        $sql = "SELECT * FROM $table WHERE id = '$id'";
+    function searchVet($table, $connobject, $keyword) {
+        $sql = "SELECT * FROM $table WHERE name LIKE '%$keyword%' OR email LIKE '%$keyword%' OR phone LIKE '%$keyword%'";
         return $connobject->query($sql);
     }
 
-    function updateAdminByID($table, $connobject, $id, $name, $email, $phone) {
+    function updateVetByID($table, $connobject, $id, $name, $email, $password, $phone, $license, $sp_field) {
         $sql = "UPDATE $table SET 
-                name = '$name', 
-                email = '$email', 
-                phone = '$phone' 
+                name = '$name',
+                email = '$email',
+                password = '$password',
+                phone = '$phone',
+                license = '$license',
+                sp_field = '$sp_field' 
                 WHERE id = '$id'";
-        
         return $connobject->query($sql);
     }
 
-    function addCustomer($table, $name, $email, $password, $phone, $nid, $address, $connobject) {
-        $sql = "INSERT INTO $table (name, email, password, phone, nid, address) 
-                VALUES ('$name', '$email', '$password', '$phone', '$nid', '$address')";
-        
-        return $connobject->query($sql);
-    }
-
-    // Customer Login
-    function loginCustomer($table, $email, $password, $connobject) {
-        $sql = "SELECT * FROM $table WHERE email = '$email' AND password = '$password'";
-        $result = $connobject->query($sql);
-        
-        return ($result->num_rows > 0) ? $result->fetch_assoc() : false;
-    }
-
-    // Show All Customers
-    function showAllCustomers($table, $connobject) {
-        $sql = "SELECT * FROM $table";
-        return $connobject->query($sql);
-    }
-
-    // Search Customer by ID
-    function searchCustomerByID($table, $connobject, $id) {
-        $sql = "SELECT * FROM $table WHERE id = '$id'";
-        return $connobject->query($sql);
-    }
-
-    // Update Customer
-    function updateCustomerByID($table, $connobject, $id, $name, $email, $phone, $nid, $address) {
-        $sql = "UPDATE $table SET 
-                name = '$name', 
-                email = '$email', 
-                phone = '$phone', 
-                nid = '$nid',
-                address = '$address' 
-                WHERE id = '$id'";
-        
-        return $connobject->query($sql);
-    }
-
-    // Delete Customer
-    function deleteCustomerByID($table, $connobject, $id) {
+    function deleteVetByID($table, $connobject, $id) {
         $sql = "DELETE FROM $table WHERE id = '$id'";
         return $connobject->query($sql);
+    }
+    private $conn;
+    public function searchPets($query) {
+        $query = "%" . $query . "%"; // Prepare query for LIKE search
+        $sql = "SELECT * FROM vet WHERE name LIKE ? OR email LIKE ? OR id LIKE ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sss", $query, $query, $query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 

@@ -1,80 +1,174 @@
+<?php
+include "../control/dashboard_control.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Vet Management Dashboard</title>
     <link rel="stylesheet" href="../css/dashboard.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/dashboard.js" defer></script>
 </head>
+
 <body>
-    <div class="dashboard-container">
-        <header>
-            <h2>Admin Dashboard</h2>
-            <div class="admin-info">
-                <span>Admin: John Doe (admin@example.com)</span>
-                <button class="logout">Logout</button>
-            </div>
-        </header>
-        
-        <nav>
-            <button class="tab-button" onclick="showTab('admin')">Admins</button>
-            <button class="tab-button" onclick="showTab('customer')">Customers</button>
-        </nav>
-        
-        <section class="tab-content" id="admin">
-            <h3>Admin Management</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="admin-table"></tbody>
-            </table>
-            <button class="insert" onclick="openForm('admin')">Insert New Admin</button>
-            <input type="text" id="search-admin" placeholder="Search by ID...">
-            <button onclick="searchRecord('admin')">Search</button>
-        </section>
-        
-        <section class="tab-content" id="customer" style="display: none;">
-            <h3>Customer Management</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="customer-table"></tbody>
-            </table>
-            <button class="insert" onclick="openForm('customer')">Insert New Customer</button>
-            <input type="text" id="search-customer" placeholder="Search by ID...">
-            <button onclick="searchRecord('customer')">Search</button>
-        </section>
-    </div>
-    
-    <!-- Modal Form -->
-    <div id="form-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="closeForm()">&times;</span>
-            <h3 id="form-title">Insert Admin</h3>
-            <input type="hidden" id="record-id">
-            <input type="text" id="name" placeholder="Name">
-            <input type="email" id="email" placeholder="Email">
-            <input type="text" id="password" placeholder="Password">
-            <input type="text" id="phone" placeholder="Phone">
-            <input type="text" id="address" placeholder="Address">
-            <button onclick="submitForm()">Save</button>
-        </div>
-    </div>
+    <header>
+        <h1>Vet Management Dashboard</h1>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone</th>
+                    <th>License</th>
+                    <th>Specialization Field</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <tr>
+                    <td colspan="8">
+
+                        <form id="addUserForm" method="POST">
+                            <input type="hidden" name="action" value="add"> <!-- Hidden action field -->
+                            <input type="text" name="name" placeholder="Name" required>
+                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="text" name="phone" placeholder="Phone" required>
+                            <input type="text" name="license" placeholder="License" required>
+                            <input type="text" name="s_field" placeholder="Specialization Field" required>
+                            <button type="submit">Add User</button>
+                        </form>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <form id="updateUserForm" method="POST">
+                            <input type="hidden" name="action" value="update"> <!-- Hidden action field -->
+                            <input type="text" name="id" placeholder="User ID" required>
+                            <input type="text" name="name" placeholder="New Name">
+                            <input type="email" name="email" placeholder="New Email">
+                            <input type="password" name="password" placeholder="New Password">
+                            <input type="text" name="phone" placeholder="New Phone">
+                            <input type="text" name="license" placeholder="New License">
+                            <input type="text" name="s_field" placeholder="New Specialization Field">
+                            <button type="submit">Update User</button>
+                        </form>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <h2>Search Vet</h2>
+                        <form method="POST">
+                            <input type="hidden" name="action" value="search">
+                            <input type="text" name="keyword" placeholder="Enter name, email, or phone" required>
+                            <button type="submit">Search</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8">
+                        <form id="deleteUserForm" method="POST">
+                            <input type="hidden" name="action" value="delete"> <!-- Hidden action field -->
+                            <input type="text" name="id" placeholder="User ID" required>
+                            <button type="submit">Delete User</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <tbody>
+    <?php if (!empty($vets)) : ?>
+        <?php foreach ($vets as $vet) : ?>
+            <tr>
+                <td><?php echo $vet['id']; ?></td>
+                <td><?php echo $vet['name']; ?></td>
+                <td><?php echo $vet['email']; ?></td>
+                <td><?php echo $vet['password']; ?></td>
+                <td><?php echo $vet['phone']; ?></td>
+                <td><?php echo $vet['license']; ?></td>
+                <td><?php echo $vet['sp_field']; ?></td>
+                <td>
+                    <form method="POST" style="">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id" value="<?php echo $vet['id']; ?>">
+                        <!-- <button type="submit">Delete</button> -->
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <tr>
+            <td colspan="8">No vets found.</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchUsers();
+
+            function fetchUsers() {
+                fetch("../control/dashboard_control.php?ajax=true")
+                    .then(response => response.json())
+                    .then(data => {
+                        let tableBody = document.getElementById("userTableBody");
+                        tableBody.innerHTML = "";
+                        data.forEach(user => {
+                            let row = `<tr>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.password}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.license}</td>
+                        <td>${user.sp_field}</td>
+                        <td>
+                            <button onclick="deleteUser(${user.id})">Delete</button>
+                        </td>
+                    </tr>`;
+                            tableBody.innerHTML += row;
+                        });
+                    })
+                    .catch(error => console.error('Error fetching users:', error));
+            }
+
+            function deleteUser(id) {
+                fetch("../control/dashboard_control.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: `action=delete&id=${id}`
+                }).then(() => fetchUsers());
+            }
+        });
+    </script>
+
+
+    <script src="../js/dashboard.js"></script> -->
 </body>
+
 </html>

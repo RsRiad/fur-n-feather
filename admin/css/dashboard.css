@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,60 +5,23 @@ body {
     background-color: #f4f4f4;
 }
 
-.dashboard-container {
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 24px;
+}
+
+main {
     width: 90%;
-    margin: auto;
+    margin: 20px auto;
     background: white;
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #007bff;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 8px 8px 0 0;
-}
-
-.admin-info {
-    font-size: 16px;
-}
-
-.logout {
-    background: red;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-/* Navigation Tabs */
-nav {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.tab-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.tab-button:hover {
-    background: #0056b3;
-}
-
-/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -68,89 +30,48 @@ table {
 }
 
 th, td {
+    padding: 12px;
     border: 1px solid #ddd;
-    padding: 10px;
     text-align: center;
 }
 
 th {
+    background: #555;
+    color: white;
+}
+
+td {
+    background: #fafafa;
+}
+
+form input, form button {
+    margin: 5px;
+    padding: 8px;
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background: #28a745;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+form button:hover {
+    background: #218838;
+}
+
+#searchButton {
     background: #007bff;
     color: white;
-}
-
-/* Buttons */
-button {
-    padding: 6px 12px;
-    margin: 5px;
+    padding: 10px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
-}
-
-.insert {
-    background: green;
-    color: white;
-}
-
-.update {
-    background: orange;
-    color: white;
-}
-
-.delete {
-    background: red;
-    color: white;
-}
-
-/* Search Box */
-input[type="text"], input[type="email"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    border: 1px solid #ddd;
     border-radius: 4px;
 }
 
-/* Modal Styling */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 50%;
-}
-
-.close {
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: red;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    table, th, td {
-        font-size: 14px;
-    }
-    .tab-button {
-        padding: 8px;
-    }
-    .modal-content {
-        width: 80%;
-    }
+#searchButton:hover {
+    background: #0056b3;
 }

@@ -1,97 +1,81 @@
 <?php
-include '../model/db.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include "../model/db.php";
 
-$database = new mydb();
-$conn = $database->openCon();
+$db = new MyDB();
+$conn = $db->openCon();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$message = "";
+$vets = [];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'];
-    $table = $_POST['table'];
-    
-    if ($table == "customer") {
-        if ($action == "insert") {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $phone = $_POST['phone'];
-            $nid = $_POST['nid'];
-            $address = $_POST['address'];
-            
-            $result = $database->addCustomer($table, $name, $email, $password, $phone, $nid, $address, $conn);
-            echo $result ? "Customer added successfully" : "Error adding customer";
-        }
-        elseif ($action == "update") {
-            $id = $_POST['id'];
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $nid = $_POST['nid'];
-            $address = $_POST['address'];
-            
-            $result = $database->updateCustomerByID($table, $conn, $id, $name, $email, $phone, $nid, $address);
-            echo $result ? "Customer updated successfully" : "Error updating customer";
-        }
-        elseif ($action == "delete") {
-            $id = $_POST['id'];
-            
-            $result = $database->deleteCustomerByID($table, $conn, $id);
-            echo $result ? "Customer deleted successfully" : "Error deleting customer";
-        }
-        elseif ($action == "search") {
-            $id = $_POST['id'];
-            $result = $database->searchCustomerByID($table, $conn, $id);
-            
-            if ($result->num_rows > 0) {
-                echo json_encode($result->fetch_assoc());
-            } else {
-                echo json_encode(["error" => "Customer not found"]);
-            }
+
+    // Add Vet
+    if ($action == 'add') {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $phone = $_POST['phone'];
+        $license = $_POST['license'];
+        $s_field = $_POST['s_field'];
+
+        if ($db->addVet("vet", $name, $email, $password, $phone, $license, $s_field, $conn)) {
+            $message = "Vet added successfully!";
+        } else {
+            $message = "Failed to add vet: " . $conn->error; // Show DB error
         }
     }
-    elseif ($table == "admin") {
-        if ($action == "insert") {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $phone = $_POST['phone'];
-            
-            $result = $database->addAdmin($table, $name, $email, $password, $phone, $conn);
-            echo $result ? "Admin added successfully" : "Error adding admin";
-        }
-        elseif ($action == "update") {
-            $id = $_POST['id'];
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            
-            $result = $database->updateAdminByID($table, $conn, $id, $name, $email, $phone);
-            echo $result ? "Admin updated successfully" : "Error updating admin";
-        }
-        elseif ($action == "delete") {
-            $id = $_POST['id'];
-            
-            $result = $database->deleteCustomerByID($table, $conn, $id);
-            echo $result ? "Admin deleted successfully" : "Error deleting admin";
-        }
-        elseif ($action == "search") {
-            $id = $_POST['id'];
-            $result = $database->searchAdminByID($table, $conn, $id);
-            
-            if ($result->num_rows > 0) {
-                echo json_encode($result->fetch_assoc());
-            } else {
-                echo json_encode(["error" => "Admin not found"]);
-            }
+
+    // Update Vet
+    if ($action == 'update') {
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $phone = $_POST['phone'];
+        $license = $_POST['license'];
+        $s_field = $_POST['s_field'];
+
+        if ($db->updateVetByID("vet", $conn, $id, $name, $email, $password, $phone, $license, $s_field)) {
+            $message = "Vet updated successfully!";
+        } else {
+            $message = "Failed to update vet: " . $conn->error;
         }
     }
-} elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $table = $_GET['table'];
-    $result = $database->showAllAdmins($table, $conn);
-    
-    $data = [];
+
+    // Delete Vet
+    if ($action == 'delete') {
+        $id = $_POST['id'];
+
+        if ($db->deleteVetByID("vet", $conn, $id)) {
+            $message = "Vet deleted successfully!";
+        } else {
+            $message = "Failed to delete vet: " . $conn->error;
+        }
+    }
+
+    // Search Vet
+    if ($action == 'search') {
+        $keyword = $_POST['keyword']; // Get the search keyword
+        $result = $db->searchVet("vet", $conn, $keyword); // Perform the search
+        $vets = []; // Reset the vets array
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $vets[] = $row; // Add each row to the vets array
+            }
+        } else {
+            $message = "No results found or an error occurred: " . $conn->error; // Handle errors
+        }
+    }
+}
+
+// Fetch all vets ONLY if no search was performed
+if (!isset($_POST['action']) || $_POST['action'] != 'search') {
+    $result = $db->showAllVets("vet", $conn);
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        $vets[] = $row;
     }
-    echo json_encode($data);
 }
 ?>
